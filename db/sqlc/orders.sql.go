@@ -5,7 +5,6 @@ package db
 
 import (
 	"context"
-	"database/sql"
 )
 
 const createOrder = `-- name: CreateOrder :one
@@ -19,8 +18,8 @@ INSERT INTO orders (
 `
 
 type CreateOrderParams struct {
-	UserName    sql.NullString
-	ProductName sql.NullString
+	UserName    string
+	ProductName string
 	Amount      int32
 }
 
