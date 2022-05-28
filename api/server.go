@@ -13,9 +13,11 @@ type Server struct {
 func NewServer(record *db.Record) *Server {
 	server := &Server{record: record}
 	router := gin.Default()
+	router.SetTrustedProxies(nil)
 
 	router.POST("/order", server.CreateOrder)
 	router.GET("/order", server.GetOrder)
+	router.GET("/multipleorder", server.GetMultipleOrders)
 
 	server.router = router
 	return server

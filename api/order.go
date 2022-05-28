@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	db "github.com/aanhntm/restful-api/db/sqlc"
+	"github.com/aanhntm/restful-api/util"
 	"github.com/gin-gonic/gin"
 )
 
@@ -50,4 +51,40 @@ func (server *Server) GetOrder(ctx *gin.Context) {
 	}
 
 	ctx.IndentedJSON(http.StatusOK, order)
+}
+
+func (server *Server) GetMultipleOrders(ctx *gin.Context) {
+
+	arg := db.GetManyOrdersParams{
+		Limit:  5,
+		Offset: 0,
+	}
+	for i := 0; i < 10; i++ {
+		server.createRandomOrder(ctx)
+	}
+	order, err := server.record.GetManyOrders(ctx, arg)
+
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
+
+	ctx.IndentedJSON(http.StatusOK, order)
+}
+
+func (server *Server) createRandomOrder(ctx *gin.Context) {
+
+	arg := db.CreateOrderParams{
+		UserName:    util.RandomName(),
+		ProductName: util.RandomProductName(),
+		Amount:      util.RandomAmount(),
+	}
+
+	order, err := server.record.CreateOrder(ctx, arg)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
+
+	ctx.JSON(http.StatusOK, order)
 }

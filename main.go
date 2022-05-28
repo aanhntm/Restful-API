@@ -11,8 +11,8 @@ import (
 
 const (
 	dbDriver      = "postgres"
-	dbSource      = "postgresql://root:secret@localhost:5432/order?sslmode=disable"
-	serverAddress = "0.0.0:8080"
+	dbSource      = "postgresql://root:secret@172.17.0.2:5432/order?sslmode=disable"
+	serverAddress = "0.0.0.0:8080"
 )
 
 func main() {
