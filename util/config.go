@@ -5,23 +5,20 @@ import (
 )
 
 type Config struct {
-	DBDriver      string `mapstructure:"DB_DRIVER"`
-	DBSource      string `mapstructrue:"DB_SOURCE"`
-	ServerAddress string `mapstruct:"SERVER_ADDRESS"`
+	DBDriver      string `mapstructure:"DEFINED_DB_DRIVER"`
+	ServerAddress string `mapstructure:"DEFINED_SERVER_ADDRESS"`
+	DBSource      string `mapstructure:"DB_SOURCE"`
 }
 
 func LoadConfig(path string) (config Config, err error) {
-	viper.AddConfigPath(path)
-	viper.SetConfigName("app")
-	viper.SetConfigType("env")
+	v := viper.New()
+	v.AddConfigPath(path)
+	v.SetConfigName("app")
+	v.SetConfigType("env")
 
-	viper.AutomaticEnv()
+	v.AutomaticEnv()
+	v.ReadInConfig()
 
-	err = viper.ReadInConfig()
-	if err != nil {
-		return
-	}
-
-	err = viper.Unmarshal(&config)
+	err = v.Unmarshal(&config)
 	return
 }
