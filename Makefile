@@ -19,7 +19,7 @@ migratedown:
 test:
 	go test -v -cover ./...
 	
-dockerbuil:
+dockerbuild:
 	docker build -t restapi:latest
 
 dockerrun:
