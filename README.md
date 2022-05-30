@@ -13,7 +13,7 @@ It stores procedures to run database migrations and generates go scripts from sc
 
 ### util
 Load config environment variables from app.env to api service.
-random.go simply generates random data for testing purposes.
+<br> random.go simply generates random data for testing purposes.
 
 # Demo API
 ### Testing api with postman & results:
