@@ -6,16 +6,20 @@ services:
       - POSTGRES_DB=order
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=secret
-    depends_on:
-      - api
-    restart: always
+    ports:
+    - "5432:5432"
+    expose:
+    - 5434
   api:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    restart: always
     environment:
-      - DB_SOURCE=postgresql://root:secret@localhost:5432/order?sslmode=disable
-
+      - DB_SOURCE=postgresql://root:secret@postgres:5432/order?sslmode=disable
+    depends_on:
+      - postgres
+    entrypoint: [ "/app/wait-for.sh", "postgres:5432", "--", "/app/start.sh" ]
+    command: [ "/app/main" ] 
+     
