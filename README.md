@@ -15,7 +15,8 @@ It stores procedures to run database migration and generate go script from scrip
 Load config environment variables from app.env to api service.
 random.go simply generates random data for testing purposes.
 
-### Test api with postmain
+# Demo API
+### Test api with postmain &
 
 The service is up and running:
 ![Screen Shot 2022-05-30 at 13 32 16](https://user-images.githubusercontent.com/106065029/170930852-760cc7b0-56fa-4d55-842a-049d1a3d59bd.png)
