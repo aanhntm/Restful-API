@@ -18,8 +18,7 @@ random.go simply generates random data for testing purposes.
 ### Test api with postmain
 
 The service is up and running:
-![Screen Shot 2022-05-30 at 13 23 02](https://user-images.githubusercontent.com/106065![Uploading Screen Shot 2022-05-30 at 13.26.41.png…]()
-029/170929661-974bea4f-2fde-412c-94a1-ff32dcac92ed.png)
+![Screen Shot 2022-05-30 at 13 32 16](https://user-images.githubusercontent.com/106065029/170930852-760cc7b0-56fa-4d55-842a-049d1a3d59bd.png)
 
 <br> GET: http://localhost:8080/multipleorder #Auto-generate sample data & get 5 sample records.
 
