@@ -1,3 +1,6 @@
+network:
+	docker network create restapi_network
+	
 postgres:
 	docker run --name postgres14 --network restapi_network -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:14-alpine
 
@@ -15,8 +18,14 @@ migratedown:
 
 test:
 	go test -v -cover ./...
+	
+dockerbuil:
+	docker build -t restapi:latest
+
+dockerrun:
+	docker run --name restapi -p 8080:8080 --network restapi_network -e "DB_SOURCE=postgresql://root:secret@postgrest14:5432/order?sslmode=disable" restapi:latest
 
 server:
 	go run main.go
 
-.PHONY: postgres creaedb dropdb migrateup migratedown server
+.PHONY: network postgres creaedb dropdb migrateup migratedown server dockerbuild dockerrun
