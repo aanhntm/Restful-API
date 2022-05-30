@@ -1,5 +1,9 @@
 # Restful-API
 
-docker compose up currently can not be used.
+docker compose up
 
-make network > make postgres > > make createdb > make migrateup > make dockerbuild > make dockerrun > make server.
+# Test api with postmain
+
+GET: http://localhost:8080/multipleorder #Auto-generate sample data & get 5 sample records.
+POST: http://localhost:8080/order
+GET: http://localhost:8080/order
