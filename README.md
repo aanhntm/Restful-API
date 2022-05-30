@@ -15,8 +15,12 @@ It stores procedures to run database migration and generate go script from scrip
 Load config environment variables from app.env to api service.
 random.go simply generates random data for testing purposes.
 
-### Test api with postmain
-GET: http://localhost:8080/multipleorder #Auto-generate sample data & get 5 sample records.
+# Demo API
+After running the service by docker, I tested API using postman.
+#### GET: http://localhost:8080/multipleorder #Auto-generate sample data & get 5 sample records.
+
+![Screen Shot 2022-05-30 at 13 19 01](https://user-images.githubusercontent.com/106065029/170929159-ed38a237-1f06-4a98-8a92-6039ef09eb00.png)
+
 <br> POST: http://localhost:8080/order #Create singular record {"user":string, "product":string, "amount":int}
 <br> GET: http://localhost:8080/order
 
