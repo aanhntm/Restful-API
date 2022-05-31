@@ -16,14 +16,14 @@ Load config environment variables from app.env to api service.
 <br> random.go simply generates random data for testing purposes.
 
 ## Dockerfile
-Building docker images have been separated to 2 stages due to the large size of images was generated when images were build with only 1 stage.
+Building docker images has been separated to 2 stages due to the large size of images was generated when images were build with only 1 stage.
 #### Build stage:
 App was built based on image golang:1.18.2-alpine3.16 with the **/app** working directory. Then all the files in the current directory will be copied to the image we are going to build. I used command **RUN go build -o main main.go** to build a binary executable file. **RUN curl -L https://github.com/golang-migrate ... ** was used to build data schema migration and will be run after we install **curl**.
 #### Run stage:
 Copy and run all neccessary file from Build stage to build images. **EXPOSE** is set to 8080, which means the container will be exposed to the port 8080 at its runtime. **CMD** define the default command to run when the container starts, it will run the executable file in the Build stage, which is /app/main. **RUN chmod +x wait-for.sh** and **RUN chmod +x start.sh** is to authorized the permission to run **wait-for.sh** (a libraby allow us to build containers in order) and **start.sh** (to instruct the docker-compose to build schema migrations before building containers). **ENTRYPOINT** helps to run all the steps in order.
 
 ## docker-compose.yaml
-Docker compose create 2 containers: postgres & api.
+Docker compose creates 2 containers: postgres & api.
 <br> - postgres is the base container which is built up from postgres:14-alpine with all environment variables provided. **Port: 5432:5432** to share this service outside of the postgres container. **EXPOSE** is to set its avalability to current container.
 <br> - api is built from setting in Dockerfile in current folder with port 8080:8080. Environment is modified with command **DB_SOURCE=postgresql://root:sec...** to change the network of api to the network of postgres. This container will be built after postgres. Entrypoint is overwrtitten to be started in order.
 
