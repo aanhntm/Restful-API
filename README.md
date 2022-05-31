@@ -1,7 +1,7 @@
 # How to run
 Open the terminal in directory of Restful-API, run below statement:
 ```
-make assignment
+make
 ```
 
 # Code structure
