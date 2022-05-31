@@ -1,6 +1,6 @@
 # How to run
 Open the terminal in directory of Restful-API, run below statement:
-<br> go run main.go
+<br> make assignment.
 
 # Code structure
 ## Used packages:
