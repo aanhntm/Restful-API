@@ -42,7 +42,7 @@ The service is up and running:
 ![Screen Shot 2022-05-30 at 13 28 08](https://user-images.githubusercontent.com/106065029/170930332-a02f2be4-ff3c-481b-9cc0-c8ec5f3df5bc.png)
 
 <br> GET: ```http://localhost:8080/order```
-![Screen Shot 2022-05-30 at 13 20 04](https://user-images.githubusercontent.com/106065029/170930210-94c3edd6-fc01-4c13-a59a-6644540f04ec.png)
+
 
 <br> Checking Postgres database:
 <img width="1430" alt="Screen Shot 2022-05-30 at 13 29 07" src="https://user-images.githubusercontent.com/106065029/170930470-f3859ac7-1ff7-4d19-b024-d9ea9b824a13.png">
